@@ -82,13 +82,17 @@ describe('Shows routes', ()=>{
       })
     })
   })
+
+  describe('DELETE /api/v1/zookeepers/:id', ()=>{
+  it('should delete a show obj from db', ()=>{
+    return chai.request(server)
+    .delete('/api/v1/zookeepers/1')
+    .then( (res)=>{
+      res.should.have.status(200);
+      res.should.be.a.json
+      res.should.be.a('object')
+    })
+  })
 })
 
-
-
-
-
-
-
-
-
+})

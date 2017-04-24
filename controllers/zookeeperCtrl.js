@@ -19,3 +19,9 @@ module.exports.addZookeeper = ({body},res,next) =>{
   .then(() => res.status(200).json({"msg" : "zookeeper added successfully"}))
   .catch((err) => { next(err)})
 }
+
+module.exports.deleteZookeeper = ({params: {id}}, res, next) =>{
+  Zookeeper.deleteZookeeper(id)
+  .then(() => res.status(200).json({"msg" : "deleted successfully"}))
+  .catch((err) => { next(err)})
+}
