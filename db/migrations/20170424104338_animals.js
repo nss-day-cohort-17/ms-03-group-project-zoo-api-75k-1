@@ -3,13 +3,13 @@ exports.up = function(knex, Promise) {
   return knex.schema
   .createTable('animals',(t)=>{
     t.increments()
-    t.string('name').NotNullable()
-    t.string('species').NotNullable()
+    t.string('name').notNullable()
+    t.string('species').notNullable()
     t.integer('age')
   })
   .createTable('zookeepers',(t)=>{
     t.increments()
-    t.string('name').NotNullable()
+    t.string('name').notNullable()
   })
 };
 
