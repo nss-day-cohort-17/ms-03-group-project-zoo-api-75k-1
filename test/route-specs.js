@@ -38,6 +38,8 @@ describe('Shows routes', ()=>{
       .then((res) => {
         res.should.have.status(200)
       })
+    })
+  })
 
   describe(`GET /api/v1/animals`, function() {
     it(`should return all animals`, function() {
@@ -46,7 +48,31 @@ describe('Shows routes', ()=>{
           res.should.have.status(200)
           res.should.be.json
         })
+    })
+  })
 
+  describe(`POST /api/v1/animals`, function() {
+    it(`should add an animal to the database`, function() {
+      return chai.request(server)
+        .post(`/api/v1/animals`)
+        .send({
+          name: 'George',
+          species: 'Monkey',
+          age: 5
+        })
+        .then(res => {
+          res.should.be.json
+          res.should.have.status(201)
+        })
     })
   })
 })
+
+
+
+
+
+
+
+
+

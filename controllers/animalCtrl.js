@@ -9,3 +9,10 @@ module.exports.getAnimals = (req, res, next) => {
 		.then(animals => res.status(200).json(animals))
 		.catch(error => next(error))
 }
+
+module.exports.addAnimal = (req, res, next) => {
+	const animal = req.body
+	Animal.addOne(animal)
+		.then(animal => res.status(201).json(animal))
+		.catch(err => next(err))
+}
