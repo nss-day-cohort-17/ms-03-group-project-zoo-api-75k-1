@@ -8,7 +8,8 @@ router.use(require('./animal-route'))
 router.get('/',function (req,res) {
   res.json ({
     "zookeepers" : "http://localhost:3000/api/v1/zookeepers",
-    "zookeeper" : "http://localhost:3000/api/v1/zookeeper/id=<zookeeperId>"
+    "zookeeper" : "http://localhost:3000/api/v1/zookeeper/id=<zookeeperId>",
+    "add_zookeeper" : "http://localhost:3000/api/v1/zookeepers/new"
   })
 })
 

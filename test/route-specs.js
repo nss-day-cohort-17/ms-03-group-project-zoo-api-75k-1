@@ -17,7 +17,7 @@ describe('Shows routes', ()=>{
       .then (()=>{
         return knex.seed.run()
       })
-  })
+  });
 
   describe('get root route', ()=>{
     it('should have all routes',() =>{
@@ -28,16 +28,19 @@ describe('Shows routes', ()=>{
           res.should.be.a.json
         })
     })
-  })
+  });
 
 
-  describe('get all zookeepers', ()=>{
-    it ('should have all zookeepers', () => {
+  describe('GET /api/v1/zookeepers', ()=>{
+    it ('should return all zookeepers', () => {
       return chai.request(server)
       .get('/api/v1/zookeepers')
       .then((res) => {
         res.should.have.status(200)
+        res.should.be.json
       })
+    })
+  });
 
   describe(`GET /api/v1/animals`, function() {
     it(`should return all animals`, function() {
@@ -47,6 +50,19 @@ describe('Shows routes', ()=>{
           res.should.be.json
         })
 
+    })
+  });
+
+  describe('POST /api/v1/zookeepers/new', () => {
+    it('should add a new zookeeper obj to the db', () =>{
+      return chai.request(server)
+      .post('/api/v1/zookeepers/new')
+      .send({
+        name: "Priya"
+      })
+      .then((res) =>{
+        res.should.have.status(200);
+      })
     })
   })
 })
