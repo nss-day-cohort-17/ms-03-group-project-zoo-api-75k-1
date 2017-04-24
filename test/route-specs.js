@@ -25,9 +25,19 @@ describe('Shows routes', ()=>{
         .get('/api/v1/')
         .then((res) => {
           res.should.have.status(200)
+          res.should.be.a.json
         })
     })
   })
+
+
+  describe('get all zookeepers', ()=>{
+    it ('should have all zookeepers', () => {
+      return chai.request(server)
+      .get('/api/v1/zookeepers')
+      .then((res) => {
+        res.should.have.status(200)
+      })
 
   describe(`GET /api/v1/animals`, function() {
     it(`should return all animals`, function() {
@@ -36,6 +46,7 @@ describe('Shows routes', ()=>{
           res.should.have.status(200)
           res.should.be.json
         })
+
     })
   })
 })
