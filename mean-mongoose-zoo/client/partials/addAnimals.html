@@ -1,0 +1,40 @@
+<h1>Add Animals Here</h1>
+
+<fieldset>
+  <div>
+    <label for="name">Name</label>
+    <input type="text" ng-model="newAnimal.name" placeholder="Francine" name="name">  
+    <label for="species">Species</label>
+    <input type="text" ng-model="newAnimal.species" placeholder="Penguin" name="species">
+    <label for="age">Age</label>
+    <input type="number" ng-model="newAnimal.age" placeholder="3" name="age">
+    <div ng-repeat="zookeeper in zookeepers">
+      <input type="checkbox" name={{zookeeper.name}} value={{zookeeper.name}} ng-model="zookeeper.checked">
+      <label for={{zookeeper.name}}>{{zookeeper.name}}</label>
+    </div>
+    <input type="button" value="add animal" ng-click="addAnimal()">
+  </div>
+</fieldset>
+
+<h1>Add Zookeepers Here</h1>
+<fieldset>
+  <div>
+    <label for="name">zookeeper name</label>
+    <input type="text" ng-model="newZookeeper.name" placeholder="Suzie">
+    <input type="button" value="add zookeeper" ng-click="addZookeeper()">
+  </div>
+</fieldset>
+
+<h1>Delete Zookeepers Here</h1>
+<fieldset>
+  <div ng-repeat="zookeeper in zookeepers">
+    <div>
+      <p class="zookeeperDeleteName" for={{zookeeper.name}}>{{zookeeper.name}}</p>
+      <input class="deleteZookeeperButton" type="button" name="" value="delete" ng-click="deleteZookeeper(zookeeper._id)">
+    </div>
+  </div>
+</fieldset>
+
+
+<a href="/#!/zoo"><input type="button" value="look at your zoo"></a>
+<a href="/#!/"><input type="button" value="home"></a>

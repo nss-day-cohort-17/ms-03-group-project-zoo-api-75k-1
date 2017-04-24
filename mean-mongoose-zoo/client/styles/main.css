@@ -1,0 +1,40 @@
+body {
+  background-color: lightgray;
+}
+
+.animalCard {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+  display: inline-block;
+  width: 30%;
+  height: 350px;
+  overflow: scroll;
+}
+
+.animalPic {
+  width: 90%;
+  margin: 5%;
+}
+
+.titlePic {
+  width: 275px;
+  display: inline;
+}
+
+#title {
+  display: inline;
+  font-size: 5em;
+  margin: auto;
+}
+
+.deleteZookeeperButton{
+  display: inline;
+}
+
+.zookeeperDeleteName {
+  display: inline;
+}
+
+
+

@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Zoo</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+  </head>
+  <body ng-app="Zoo">
+    <img class="titlePic"src="http://www.trbimg.com/img-5764761a/turbine/la-na-san-diego-zoo-panda-20160617-snap">
+    <h1 id="title">Welcome to the zoo</h1>
+    <div ng-view></div>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-route/angular-route.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/factories/animalFact.js"></script>
+    <script src="app/factories/zookeeperFact.js"></script>
+    <script src="app/controllers/home.js"></script>
+    <script src="app/controllers/addAnimals.js"></script>
+    <script src="app/controllers/zoo.js"></script>
+
+  </body>
+</html>
