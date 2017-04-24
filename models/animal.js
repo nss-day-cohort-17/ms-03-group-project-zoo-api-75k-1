@@ -7,6 +7,9 @@ const Animal = bookshelf.Model.extend({
 }, {
 	getAll: function() {
 		return this.forge().fetchAll()
+	},
+	addOne: function(animal) {
+		return this.forge(animal).save({},{require: true})
 	}
 })
 
