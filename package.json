@@ -4,6 +4,8 @@
   "description": "Zoo app [here](https://github.com/priyakamesh/mean-mongoose-zoo)",
   "main": "app.js",
   "scripts": {
+    "db:reset": "knex migrate:rollback && knex migrate:latest && knex seed:run",
+    "start": "nodemon bin/zoo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
