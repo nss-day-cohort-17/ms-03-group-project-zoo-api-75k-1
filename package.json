@@ -1,0 +1,25 @@
+{
+  "name": "ms-03-group-project-zoo-api-75k-1",
+  "version": "1.0.0",
+  "description": "Zoo app [here](https://github.com/priyakamesh/mean-mongoose-zoo)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nss-day-cohort-17/ms-03-group-project-zoo-api-75k-1.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nss-day-cohort-17/ms-03-group-project-zoo-api-75k-1/issues"
+  },
+  "homepage": "https://github.com/nss-day-cohort-17/ms-03-group-project-zoo-api-75k-1#readme",
+  "dependencies": {
+    "bookshelf": "^0.10.3",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "knex": "^0.12.9"
+  }
+}
