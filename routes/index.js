@@ -7,8 +7,8 @@ router.use(require('./zookeeper-route'))
 router.use(require('./animal-route'))
 router.get('/',function (req,res) {
   res.json ({
-  	"animals": "http://localhost:3000/api/v1/animals",
-    "zookeepers" : "http://localhost:3000/api/v1/zookeepers",
+  	"animals": "https://zoo-api.herokuapp.com/api/v1/animals",
+    "zookeepers" : "https://zoo-api.herokuapp.com/api/v1/zookeepers",
   })
 })
 
