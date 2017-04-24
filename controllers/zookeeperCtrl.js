@@ -12,3 +12,10 @@ module.exports.getAllZookeepers = (req,res,next) => {
     next(error);
   });
 }
+
+module.exports.addZookeeper = ({body},res,next) =>{
+  Zookeeper.forge(body)
+  .save()
+  .then(() => res.status(200).json({"msg" : "zookeeper added successfully"}))
+  .catch((err) => { next(err)})
+}
