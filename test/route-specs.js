@@ -28,4 +28,14 @@ describe('Shows routes', ()=>{
         })
     })
   })
+
+  describe(`GET /api/v1/animals`, function() {
+    it(`should return all animals`, function() {
+      return chai.request(server)
+        .get(`/api/v1/animals`).then(res => {
+          res.should.have.status(200)
+          res.should.be.json
+        })
+    })
+  })
 })
