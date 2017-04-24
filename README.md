@@ -1,4 +1,4 @@
-Zoo app [here](https://github.com/priyakamesh/zoo)
+Zoo app [here](https://github.com/priyakamesh/mean-mongoose-zoo)
 
 # express-api-group-project
 Creating an API for an existing Angular app
