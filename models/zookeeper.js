@@ -14,6 +14,16 @@ const Zookeeper = bookshelf.Model.extend( {
     .catch( (err) =>{
       return err
     })
+  },
+  deleteZookeeper: function (id) {
+    return this.forge({id})
+    .destroy()
+    .then( ()=>{
+      return {"msg" : "deleted zookeeper"}
+    })
+    .catch( (err) =>{
+      return err
+    })
   }
 })
 
