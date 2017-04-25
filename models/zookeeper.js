@@ -28,7 +28,8 @@ const Zookeeper = bookshelf.Model.extend( {
     .catch( (err) =>{
       return err
     })
-  }
+  },
+  dependents: ['animals']
 })
 
 module.exports =bookshelf.model('Zookeeper', Zookeeper)
