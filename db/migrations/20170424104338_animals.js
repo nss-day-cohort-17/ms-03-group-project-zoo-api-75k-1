@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
     t.string('species').notNullable()
     t.integer('age')
     t.string('type').notNullable()
+    t.string('pic')
   })
   .createTable('zookeepers',(t)=>{
     t.increments()
@@ -21,7 +22,7 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return knex.schema
-  .dropTable('animals_zookeepers')
-  .dropTable('animals')
-  .dropTable('zookeepers')
+  .dropTableIfExists('animals_zookeepers')
+  .dropTableIfExists('animals')
+  .dropTableIfExists('zookeepers')
 };

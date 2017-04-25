@@ -18,7 +18,15 @@ const Animal = bookshelf.Model.extend({
 		// Delete animal and all dependents in other tables
 		return this.forge({id}).destroy()
 	},
-	dependents: ['zookeepers']
+	dependents: ['zookeepers'],
+  updateAnimal: function(id,body) {
+    // console.log("bodyFromModel",{age:10});
+    return this.forge({id}).save(body)
+    .then( (edit) =>{
+      return{"msg" : "edited successfully"}
+    })
+    .catch( (err) =>{ return err})
+  }
 })
 
 module.exports = bookshelf.model('Animal', Animal)
