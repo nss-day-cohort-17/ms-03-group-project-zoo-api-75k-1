@@ -12,16 +12,16 @@ exports.up = function(knex, Promise) {
     t.increments()
     t.string('name').notNullable()
   })
-  // .createTable('animals_zookeepers',(t)=>{
-  //   t.increments()
-  //   t.integer('animal_id').unsigned().references('animals.id')
-  //   t.integer('zookeeper_id').unsigned().references('zookeepers.id')
-  // })
+  .createTable('animals_zookeepers',(t)=>{
+    t.increments()
+    t.integer('animal_id').unsigned().references('animals.id')
+    t.integer('zookeeper_id').unsigned().references('zookeepers.id')
+  })
 };
 
 exports.down = function(knex, Promise) {
   return knex.schema
-  // .dropTable('animals_zookeepers')
+  .dropTable('animals_zookeepers')
   .dropTable('animals')
   .dropTable('zookeepers')
 };
