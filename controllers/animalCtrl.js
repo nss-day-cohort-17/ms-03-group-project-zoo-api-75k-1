@@ -1,6 +1,7 @@
 'use strict'
 
 const Animal = require('../models/animal')
+const AnimalZookeeper = require('../models/animalZookeeper')
 
 // Fetches animals from database when called
 // responds with status code 200 and json of animals if successful
@@ -11,9 +12,22 @@ module.exports.getAnimals = (req, res, next) => {
 }
 
 module.exports.addAnimal = (req, res, next) => {
-	const animal = req.body
+	let animal = req.body
+	const zookeepers = animal.zookeepers
+	// Remove zookeepers property from animal object
+	delete animal.zookeepers
+
 	Animal.addOne(animal)
-		.then(animal => res.status(201).json(animal))
+		.then(animal => {
+			const id = animal.id
+			let pairs = []
+			zookeepers.forEach(keeper => {
+				pairs.push({animal_id: id, zookeeper_id: keeper.id})
+			})
+			AnimalZookeeper.addMany(pairs)
+				.then(response => res.status(201).json({animal}))
+				.catch(err => next(err))
+		})
 		.catch(err => next(err))
 }
 
