@@ -12,7 +12,7 @@ app.use(cors())
 if (process.env.NODE_ENV !== 'test') {
   app.use(logger('dev'));
 }
-require('dotenv').config()
+// require('dotenv').config()
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

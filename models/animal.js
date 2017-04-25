@@ -9,7 +9,7 @@ const Animal = bookshelf.Model.extend({
   zookeepers: function () { return this.belongsToMany('Zookeeper').through('AnimalZookeeper')}
 }, {
 	getAllWithRelated: function() {
-		return this.forge().fetchAll({withRelated: ['zookeepers']})
+		return this.forge().orderBy('id', 'ASC').fetchAll({withRelated: ['zookeepers']})
 	},
 	addOne: function(animal) {
 		return this.forge(animal).save({},{require: true})
@@ -19,9 +19,9 @@ const Animal = bookshelf.Model.extend({
 		return this.forge({id}).destroy()
 	},
 	dependents: ['zookeepers'],
-  updateAnimal: function(id,body) {
+  updateAnimal: function(id,{name,age,species}) {
     // console.log("bodyFromModel",{age:10});
-    return this.forge({id}).save(body)
+    return this.forge({id}).save({name,age,species})
     .then( (edit) =>{
       return{"msg" : "edited successfully"}
     })
