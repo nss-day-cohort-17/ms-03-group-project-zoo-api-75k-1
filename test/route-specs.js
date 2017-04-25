@@ -61,7 +61,8 @@ describe('Shows routes', ()=>{
         .send({
           name: 'George',
           species: 'Monkey',
-          age: 5
+          age: 5,
+          type: "primate"
         })
         .then(res => {
           res.should.be.json
@@ -94,5 +95,21 @@ describe('Shows routes', ()=>{
     })
   })
 })
+
+  describe('UPDATE /api/v1/animals/:id', () =>{
+    it('should update an animal obj', () => {
+      return chai.request(server)
+      .patch('/api/v1/animals/1')
+      .send({
+        age:12,
+        type: "primate"
+      })
+      .then( (res) => {
+        res.should.have.status(200)
+        res.should.be.a.json
+        res.should.be.a('object')
+      })
+    })
+  })
 
 })

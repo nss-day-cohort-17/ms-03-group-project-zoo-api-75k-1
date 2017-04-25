@@ -16,3 +16,13 @@ module.exports.addAnimal = (req, res, next) => {
 		.then(animal => res.status(201).json(animal))
 		.catch(err => next(err))
 }
+
+module.exports.updateAnimal = (req,res,next) =>{
+  const animal = req.body
+  const {id} = req.params
+  console.log("id",id);
+  console.log("body",animal);
+  Animal.updateAnimal(id,animal)
+  .then(animal => res.status(200).json(animal))
+  .catch(err => next(err))
+}
