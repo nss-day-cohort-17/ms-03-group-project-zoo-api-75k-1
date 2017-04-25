@@ -61,6 +61,7 @@ describe('Shows routes', ()=>{
         .send({
           name: 'George',
           species: 'Monkey',
+          type: 'Primate',
           age: 5
         })
         .then(res => {
@@ -69,6 +70,17 @@ describe('Shows routes', ()=>{
         })
     })
   });
+
+  describe(`DELETE /api/v1/animals/:id`, function() {
+    it(`should delete all rows from the pivot table and the animal`, function() {
+      return chai.request(server)
+        .delete(`/api/v1/animals/5`)
+        .then(res => {
+          res.should.be.json
+          res.should.have.status(204)
+        })
+    })
+  })
 
   describe('POST /api/v1/zookeepers/new', () => {
     it('should add a new zookeeper obj to the db', () =>{
