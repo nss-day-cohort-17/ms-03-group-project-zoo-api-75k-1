@@ -9,3 +9,5 @@ router.get('/animals', getAnimals)
 router.post('/animals', addAnimal)
 router.patch('/animals/:id', updateAnimal )
 router.delete('/animals/:id', deleteAnimal)
+
+module.exports = router
