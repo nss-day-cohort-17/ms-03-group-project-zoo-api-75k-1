@@ -74,7 +74,7 @@ describe('Shows routes', ()=>{
   describe(`DELETE /api/v1/animals/:id`, function() {
     it(`should delete all rows from the pivot table and the animal`, function() {
       return chai.request(server)
-        .delete(`/api/v1/animals/5`)
+        .delete(`/api/v1/animals/23`)
         .then(res => {
           res.should.be.json
           res.should.have.status(204)
