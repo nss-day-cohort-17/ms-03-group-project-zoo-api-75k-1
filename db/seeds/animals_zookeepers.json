@@ -1,0 +1,8 @@
+[
+  {"animal_id" : 1, "zookeeper_id": 3},
+  {"animal_id" : 2, "zookeeper_id": 5},
+  {"animal_id" : 3, "zookeeper_id": 9},
+  {"animal_id" : 2, "zookeeper_id": 2},
+  {"animal_id" : 5, "zookeeper_id": 4},
+  {"animal_id" : 6, "zookeeper_id": 5}
+]
