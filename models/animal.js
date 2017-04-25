@@ -3,7 +3,8 @@
 const {bookshelf} = require('../db/database')
 
 const Animal = bookshelf.Model.extend({
-	tableName: 'animals'
+	tableName: 'animals',
+  zookeepers: function () { return this.belongsToMany('Zookeeper').through('animals_zookeepers')}
 }, {
 	getAll: function() {
 		return this.forge().fetchAll()
