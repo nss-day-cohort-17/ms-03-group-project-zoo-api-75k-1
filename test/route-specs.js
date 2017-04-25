@@ -62,7 +62,12 @@ describe('Shows routes', ()=>{
           name: 'George',
           species: 'Monkey',
           type: 'Primate',
-          age: 5
+          age: 5,
+          zookeepers: [
+            {id: 1},
+            {id: 2},
+            {id: 3}
+          ]
         })
         .then(res => {
           res.should.be.json
