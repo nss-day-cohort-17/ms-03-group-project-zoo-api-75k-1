@@ -51,7 +51,7 @@ describe('Zoo routes', ()=>{
   });
 
 
-
+  // tests getting all animals
   describe(`GET /api/v1/animals`, function() {
     it(`should return all animals`, function() {
       return chai.request(server)
