@@ -20,6 +20,7 @@ describe('Zoo routes', ()=>{
       })
   });
 
+  // test for getting the api root
   describe('get root route', ()=>{
     it('should have all routes',() =>{
       return chai.request(server)
