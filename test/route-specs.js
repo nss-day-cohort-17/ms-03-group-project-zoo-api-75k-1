@@ -34,23 +34,6 @@ describe('Zoo routes', ()=>{
     })
   });
 
-  // test getting all zookeepers
-  describe('GET /api/v1/zookeepers', ()=>{
-    it ('should return all zookeepers', () => {
-      return chai.request(server)
-      .get('/api/v1/zookeepers')
-      .then((res) => {
-        res.should.have.status(200)
-        res.should.be.json
-        res.body.should.be.a.object
-        res.body.should.have.key('zookeepers')
-        res.body.zookeepers.should.be.a.array
-        res.body.zookeepers[0].name.should.equal('Rudolf')
-      })
-    })
-  });
-
-
   // tests getting all animals
   describe(`GET /api/v1/animals`, function() {
     it(`should return all animals`, function() {
@@ -102,6 +85,39 @@ describe('Zoo routes', ()=>{
     })
   })
 
+  // test for editing an existing animal
+  describe('UPDATE /api/v1/animals/:id', () =>{
+    it('should update an animal obj', () => {
+      return chai.request(server)
+      .patch('/api/v1/animals/1')
+      .send({
+        age:12,
+        type: "primate"
+      })
+      .then( (res) => {
+        res.should.have.status(200)
+        res.should.be.a.json
+        res.should.be.a.object
+      })
+    })
+  })
+
+  // test getting all zookeepers
+  describe('GET /api/v1/zookeepers', ()=>{
+    it ('should return all zookeepers', () => {
+      return chai.request(server)
+      .get('/api/v1/zookeepers')
+      .then((res) => {
+        res.should.have.status(200)
+        res.should.be.json
+        res.body.should.be.a.object
+        res.body.should.have.key('zookeepers')
+        res.body.zookeepers.should.be.a.array
+        res.body.zookeepers[0].name.should.equal('Rudolf')
+      })
+    })
+  });
+
   // test for posting a new zookeeper
   describe('POST /api/v1/zookeepers/new', () => {
     it('should add a new zookeeper obj to the db', () =>{
@@ -129,21 +145,5 @@ describe('Zoo routes', ()=>{
     })
   })
 
-  // test for editing an existing animal
-  describe('UPDATE /api/v1/animals/:id', () =>{
-    it('should update an animal obj', () => {
-      return chai.request(server)
-      .patch('/api/v1/animals/1')
-      .send({
-        age:12,
-        type: "primate"
-      })
-      .then( (res) => {
-        res.should.have.status(200)
-        res.should.be.a.json
-        res.should.be.a.object
-      })
-    })
-  })
 
 })
