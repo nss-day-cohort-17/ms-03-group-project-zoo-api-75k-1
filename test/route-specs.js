@@ -156,7 +156,7 @@ describe('Zoo routes', ()=>{
         res.body.should.be.a.object
         res.body.should.have.key('trainers')
         res.body.trainers.should.be.a.array
-        res.body.trainers[0].name.should.equal('Rudolf')
+        res.body.trainers[0].name.should.equal('Tammie Tieman')
       })
     })
   });
