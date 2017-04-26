@@ -145,5 +145,20 @@ describe('Zoo routes', ()=>{
     })
   })
 
+    // test getting all trainers
+  describe('GET /api/v1/trainers', ()=>{
+    it ('should return all trainers', () => {
+      return chai.request(server)
+      .get('/api/v1/trainers')
+      .then((res) => {
+        res.should.have.status(200)
+        res.should.be.json
+        res.body.should.be.a.object
+        res.body.should.have.key('trainers')
+        res.body.trainers.should.be.a.array
+        res.body.trainers[0].name.should.equal('Rudolf')
+      })
+    })
+  });
 
 })
