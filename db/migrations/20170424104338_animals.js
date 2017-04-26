@@ -18,6 +18,20 @@ exports.up = function(knex, Promise) {
     t.integer('animal_id').unsigned().references('animals.id')
     t.integer('zookeeper_id').unsigned().references('zookeepers.id')
   })
+  .createTable('tricks',(t)=>{
+    t.increments()
+    t.string('name').notNullable()
+  })
+  .createTable('trainers',(t)=>{
+    t.increments()
+    t.string('name').notNullable()
+    t.string('animal_type')
+  })
+  .createTable('animals_trainers',(t)=>{
+    t.increments()
+    t.integer('animal_id').unsigned().references('animals.id')
+    t.integer('trainer_id').unsigned().references('trainers.id')
+  })
 };
 
 exports.down = function(knex, Promise) {
