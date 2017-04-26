@@ -1,8 +1,0 @@
-[
-  {"animal_type" : 1, "trick_id": 3},
-  {"animal_type" : 2, "trick_id": 5},
-  {"animal_type" : 3, "trick_id": 9},
-  {"animal_type" : 2, "trick_id": 2},
-  {"animal_type" : 5, "trick_id": 4},
-  {"animal_type" : 6, "trick_id": 5}
-]
