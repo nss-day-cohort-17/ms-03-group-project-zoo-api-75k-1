@@ -161,4 +161,19 @@ describe('Zoo routes', ()=>{
     })
   });
 
+    // test for posting a new trainer
+  describe('POST /api/v1/trainers/new', () => {
+    it('should add a new trainer obj to the db', () =>{
+      return chai.request(server)
+      .post('/api/v1/trainers/new')
+      .send({
+        name: "Boaty McBoatface",
+        animal_type: "bear"
+      })
+      .then((res) =>{
+        res.should.have.status(200);
+      })
+    })
+  })
+
 })
