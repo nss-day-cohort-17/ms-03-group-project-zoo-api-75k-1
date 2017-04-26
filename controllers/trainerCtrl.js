@@ -24,7 +24,6 @@ module.exports.addTrainer = ({body},res,next) =>{
 }
 
 module.exports.deleteTrainer = ({params: {id}}, res, next) =>{
-  console.log('trainer id in deleteTrainer', id)
   Trainer.deleteTrainer(id)
   .then(() => res.status(200).json({"msg" : "deleted successfully"}))
   .catch((err) => { next(err)})
