@@ -8,7 +8,10 @@ requier('./trainer')
 
 const Animal = bookshelf.Model.extend({
 	tableName: 'animals',
-  zookeepers: function () { return this.belongsToMany('Zookeeper').through('AnimalZookeeper')}
+  // sets relationship with zookeepers
+  zookeepers: function () { return this.belongsToMany('Zookeeper').through('AnimalZookeeper')},
+  // sets relationship with trainers
+  trainers: function () { return this.belongsToMany('Trainer').through('AnimalTrainer')}
 }, {
 	getAllWithRelated: function() {
 		return this.forge().orderBy('id', 'ASC').fetchAll({withRelated: ['zookeepers']})
