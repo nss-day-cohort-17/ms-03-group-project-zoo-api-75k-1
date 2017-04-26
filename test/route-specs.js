@@ -29,7 +29,7 @@ describe('Zoo routes', ()=>{
           res.should.have.status(200)
           res.should.be.json
           res.should.be.a.object
-          res.body.should.have.key(['animals', 'trainers', 'zookeepers'])
+          res.body.should.have.key(['animals', 'trainers', 'zookeepers', 'tricks'])
         })
     })
   });
@@ -177,7 +177,7 @@ describe('Zoo routes', ()=>{
       })
     })
   })
-  
+
   // test for deleting a trainer
   describe(`DELETE /api/v1/trainers/:id`, function() {
     it(`should delete all rows from the pivot table and the trainer`, function() {
