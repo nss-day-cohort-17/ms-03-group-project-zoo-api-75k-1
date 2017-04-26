@@ -9,7 +9,7 @@ const Trick = bookshelf.Model.extend( {
   tableName: 'tricks',
   animals: function () { return this.belongsToMany('Animal').through('AnimalTrick')}
 }, {
-  getAllTrainers: function () {
+  getAllTricks: function () {
     return this.forge()
     .fetchAll()
     .then((tricks) => {
