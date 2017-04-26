@@ -95,12 +95,14 @@ describe('Zoo routes', ()=>{
       return chai.request(server)
         .delete(`/api/v1/animals/5`)
         .then(res => {
-          res.should.be.a.json
+          res.should.be.json
           res.should.have.status(200)
+          res.body.should.be.a.object
         })
     })
   })
 
+  // test for posting a new zookeeper
   describe('POST /api/v1/zookeepers/new', () => {
     it('should add a new zookeeper obj to the db', () =>{
       return chai.request(server)
@@ -114,17 +116,18 @@ describe('Zoo routes', ()=>{
     })
   })
 
+  // test for deleting a zookeeper
   describe('DELETE /api/v1/zookeepers/:id', ()=>{
-  it('should delete a show obj from db', ()=>{
-    return chai.request(server)
-    .delete('/api/v1/zookeepers/1')
-    .then( (res)=>{
-      res.should.have.status(200);
-      res.should.be.a.json
-      res.should.be.a('object')
+    it('should delete a show obj from db', ()=>{
+      return chai.request(server)
+      .delete('/api/v1/zookeepers/1')
+      .then( (res)=>{
+        res.should.have.status(200);
+        res.should.be.a.json
+        res.should.be.a('object')
+      })
     })
   })
-})
 
   describe('UPDATE /api/v1/animals/:id', () =>{
     it('should update an animal obj', () => {
