@@ -1,10 +1,10 @@
-const trainers = require('../trainer')
+const types = require('../types')
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('trainers').del()
+  return knex('types').del()
     .then(function () {
       // Inserts seed entries
-      return knex('trainers').insert(trainers);
+      return knex('types').insert(types);
     });
 };

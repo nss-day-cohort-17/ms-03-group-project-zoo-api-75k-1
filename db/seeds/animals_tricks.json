@@ -1,8 +1,12 @@
 [
-  {"animal_type" : "bird", "trick_id": 3},
-  {"animal_type" : "primate", "trick_id": 5},
-  {"animal_type" : "ungulate", "trick_id": 9},
-  {"animal_type" : "bovine", "trick_id": 2},
-  {"animal_type" : "reptile", "trick_id": 4},
-  {"animal_type" : "antelope", "trick_id": 5}
+  {"animal_id" : 1, "trick_id": 1},
+  {"animal_id" : 2, "trick_id": 2},
+  {"animal_id" : 3, "trick_id": 1},
+  {"animal_id" : 4, "trick_id": 2},
+  {"animal_id" : 5, "trick_id": 3},
+  {"animal_id" : 6, "trick_id": 4},
+  {"animal_id" : 7, "trick_id": 3},
+  {"animal_id" : 8, "trick_id": 5},
+  {"animal_id" : 9, "trick_id": 6},
+  {"animal_id" : 10, "trick_id": 8}
 ]
