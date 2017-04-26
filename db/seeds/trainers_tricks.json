@@ -1,8 +1,9 @@
 [
-  {"trainer_id" : 1, "trick_id": 3},
-  {"trainer_id" : 2, "trick_id": 5},
-  {"trainer_id" : 3, "trick_id": 9},
-  {"trainer_id" : 2, "trick_id": 2},
-  {"trainer_id" : 5, "trick_id": 4},
-  {"trainer_id" : 6, "trick_id": 5}
+  {"trainer_id" : 1, "trick_id": 1},
+  {"trainer_id" : 2, "trick_id": 3},
+  {"trainer_id" : 3, "trick_id": 6},
+  {"trainer_id" : 4, "trick_id": 7},
+  {"trainer_id" : 5, "trick_id": 9},
+  {"trainer_id" : 6, "trick_id": 1},
+  {"trainer_id" : 6, "trick_id": 3}
 ]
