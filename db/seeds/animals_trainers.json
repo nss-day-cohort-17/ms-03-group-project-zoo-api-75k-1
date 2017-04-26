@@ -1,0 +1,8 @@
+[
+  {"animal_id" : 1, "trainer_id": 3},
+  {"animal_id" : 2, "trainer_id": 5},
+  {"animal_id" : 3, "trainer_id": 9},
+  {"animal_id" : 2, "trainer_id": 2},
+  {"animal_id" : 5, "trainer_id": 4},
+  {"animal_id" : 6, "trainer_id": 5}
+]
