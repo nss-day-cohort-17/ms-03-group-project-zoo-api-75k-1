@@ -177,7 +177,7 @@ describe('Zoo routes', ()=>{
       })
     })
   })
-
+  
   // test for deleting a trainer
   describe(`DELETE /api/v1/trainers/:id`, function() {
     it(`should delete all rows from the pivot table and the trainer`, function() {
@@ -190,4 +190,40 @@ describe('Zoo routes', ()=>{
         })
     })
   })
+  //test for getting all tricks
+  describe('GET /api/v1/tricks', () =>{
+    it('should return all tricks', () =>{
+      return chai.request(server)
+      .get('/api/v1/tricks')
+      .then( (res) =>{
+        res.should.have.status(200)
+      })
+    })
+  })
+  //test for adding a trick
+  describe('POST /api/v1/tricks/new', () => {
+    it('should add a new trick obj to the db', () =>{
+      return chai.request(server)
+      .post('/api/v1/tricks/new')
+      .send({
+        name: "Bowling"
+      })
+      .then((res) =>{
+        res.should.have.status(200);
+      })
+    })
+  })
+  //test for delete trick
+  describe('DELETE /api/v1/tricks/:id', ()=>{
+    it('should delete a trick obj from db', ()=>{
+      return chai.request(server)
+      .delete('/api/v1/tricks/1')
+      .then( (res)=>{
+        res.should.have.status(200);
+        res.should.be.a.json
+        res.should.be.a('object')
+      })
+    })
+  })
+
 })
