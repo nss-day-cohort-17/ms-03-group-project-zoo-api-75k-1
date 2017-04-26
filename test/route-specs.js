@@ -29,7 +29,7 @@ describe('Zoo routes', ()=>{
           res.should.have.status(200)
           res.should.be.json
           res.should.be.a.object
-          res.body.should.have.key(['animals', 'zookeepers'])
+          res.body.should.have.key(['animals', 'trainers', 'zookeepers'])
         })
     })
   });
