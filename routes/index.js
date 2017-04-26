@@ -7,6 +7,7 @@ router.use(require('./zookeeper-route'))
 router.use(require('./animal-route'))
 router.use(require('./trainer-route'))
 router.use(require('./trick-route'))
+router.use(require('./type-route'))
 router.get('/',function (req,res) {
   res.json ({
   	"animals": "https://zoo-api.herokuapp.com/api/v1/animals",
