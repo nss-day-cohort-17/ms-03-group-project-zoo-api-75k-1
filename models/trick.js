@@ -3,13 +3,16 @@
 const { bookshelf } = require('../db/database')
 require('./animalTrick')
 require('./animal')
+require('./trainer')
+require('./animalTrainer')
 
 
 const Trick = bookshelf.Model.extend( {
   tableName: 'tricks',
-  animals: function () { return this.belongsToMany('Animal').through('AnimalTrick')}
+  animals: function () { return this.belongsToMany('Animal').through('AnimalTrick')},
+  trainers: function() {return this.belongsToMany('Trainer').through('AnimalTrainer')}
 }, {
-  getAllTrainers: function () {
+  getAllTricks: function () {
     return this.forge()
     .fetchAll()
     .then((tricks) => {
@@ -29,7 +32,7 @@ const Trick = bookshelf.Model.extend( {
       return err
     })
   },
-  dependents: ['animals']
+  dependents: ['animals', 'trainers']
 })
 
 module.exports = bookshelf.model('Trick', Trick)

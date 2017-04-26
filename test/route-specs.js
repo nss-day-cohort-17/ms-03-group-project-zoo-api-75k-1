@@ -190,6 +190,7 @@ describe('Zoo routes', ()=>{
         })
     })
   })
+
   //test for getting all tricks
   describe('GET /api/v1/tricks', () =>{
     it('should return all tricks', () =>{
@@ -200,6 +201,7 @@ describe('Zoo routes', ()=>{
       })
     })
   })
+
   //test for adding a trick
   describe('POST /api/v1/tricks/new', () => {
     it('should add a new trick obj to the db', () =>{
@@ -213,6 +215,7 @@ describe('Zoo routes', ()=>{
       })
     })
   })
+
   //test for delete trick
   describe('DELETE /api/v1/tricks/:id', ()=>{
     it('should delete a trick obj from db', ()=>{
