@@ -5,7 +5,7 @@ require('./animalTrainer')
 require('./animal')
 
 
-const Zookeeper = bookshelf.Model.extend( {
+const Trainer = bookshelf.Model.extend( {
   tableName: 'trainers',
   animals: function () { return this.belongsToMany('Animal').through('AnimalTrainer')}
 }, {
@@ -32,4 +32,4 @@ const Zookeeper = bookshelf.Model.extend( {
   dependents: ['animals']
 })
 
-module.exports =bookshelf.model('Trainer', Trainer)
+module.exports = bookshelf.model('Trainer', Trainer)
