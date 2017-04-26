@@ -76,7 +76,7 @@ describe('Zoo routes', ()=>{
   describe(`DELETE /api/v1/animals/:id`, function() {
     it(`should delete all rows from the pivot table and the animal`, function() {
       return chai.request(server)
-        .delete(`/api/v1/animals/5`)
+        .delete(`/api/v1/animals/1`)
         .then(res => {
           res.should.be.json
           res.should.have.status(200)
@@ -145,7 +145,7 @@ describe('Zoo routes', ()=>{
     })
   })
 
-    // test getting all trainers
+  // test getting all trainers
   describe('GET /api/v1/trainers', ()=>{
     it ('should return all trainers', () => {
       return chai.request(server)
@@ -161,7 +161,7 @@ describe('Zoo routes', ()=>{
     })
   });
 
-    // test for posting a new trainer
+  // test for posting a new trainer
   describe('POST /api/v1/trainers/new', () => {
     it('should add a new trainer obj to the db', () =>{
       return chai.request(server)
@@ -172,8 +172,22 @@ describe('Zoo routes', ()=>{
       })
       .then((res) =>{
         res.should.have.status(200);
+        res.should.be.json
+        res.should.be.a.object
       })
     })
   })
 
+  // test for deleting a trainer
+  describe(`DELETE /api/v1/trainers/:id`, function() {
+    it(`should delete all rows from the pivot table and the trainer`, function() {
+      return chai.request(server)
+        .delete(`/api/v1/trainers/1`)
+        .then(res => {
+          res.should.be.json
+          res.should.have.status(200)
+          res.body.should.be.a.object
+        })
+    })
+  })
 })
