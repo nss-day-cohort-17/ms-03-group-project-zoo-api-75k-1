@@ -61,7 +61,13 @@ describe('Shows routes', ()=>{
         .send({
           name: 'George',
           species: 'Monkey',
-          age: 5
+          type: 'Primate',
+          age: 5,
+          zookeepers: [
+            {id: 1},
+            {id: 2},
+            {id: 3}
+          ]
         })
         .then(res => {
           res.should.be.json
@@ -69,6 +75,17 @@ describe('Shows routes', ()=>{
         })
     })
   });
+
+  describe(`DELETE /api/v1/animals/:id`, function() {
+    it(`should delete all rows from the pivot table and the animal`, function() {
+      return chai.request(server)
+        .delete(`/api/v1/animals/5`)
+        .then(res => {
+          res.should.be.a.json
+          res.should.have.status(200)
+        })
+    })
+  })
 
   describe('POST /api/v1/zookeepers/new', () => {
     it('should add a new zookeeper obj to the db', () =>{
@@ -94,5 +111,21 @@ describe('Shows routes', ()=>{
     })
   })
 })
+
+  describe('UPDATE /api/v1/animals/:id', () =>{
+    it('should update an animal obj', () => {
+      return chai.request(server)
+      .patch('/api/v1/animals/1')
+      .send({
+        age:12,
+        type: "primate"
+      })
+      .then( (res) => {
+        res.should.have.status(200)
+        res.should.be.a.json
+        res.should.be.a('object')
+      })
+    })
+  })
 
 })
