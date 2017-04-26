@@ -1,21 +1,31 @@
 [{
-  "name": "Tammie Tieman"
+  "name": "Tammie Tieman",
+  "animal_type": "bird"
 }, {
-  "name": "Wallis Pointer"
+  "name": "Wallis Pointer",
+  "animal_type": "primate"
 }, {
-  "name": "Ardis Stubbley"
+  "name": "Ardis Stubbley",
+  "animal_type": "ungulate"
 }, {
-  "name": "Lonna Eagleston"
+  "name": "Lonna Eagleston",
+  "animal_type": "bovine"
 }, {
-  "name": "Laurie Mapston"
+  "name": "Laurie Mapston",
+  "animal_type": "reptile"
 }, {
-  "name": "Renee Durante"
+  "name": "Renee Durante",
+  "animal_type": "antelope"
 }, {
-  "name": "Constantine Thunders"
+  "name": "Constantine Thunders",
+  "animal_type": "rodent"
 }, {
-  "name": "Anabel De Cristoforo"
+  "name": "Anabel De Cristoforo",
+  "animal_type": "big cat"
 }, {
-  "name": "Danica Tortoishell"
+  "name": "Danica Tortoishell",
+  "animal_type": "artiodactyl"
 }, {
-  "name": "Manuel Hallede"
+  "name": "Manuel Hallede",
+  "animal_type": "bear"
 }]
