@@ -58,6 +58,10 @@ describe('Zoo routes', ()=>{
         .get(`/api/v1/animals`).then(res => {
           res.should.have.status(200)
           res.should.be.json
+          res.body.should.be.a.object
+          res.body.should.have.key('animals')
+          res.body.animals.should.be.a.array
+          res.body.animals[0].name.should.equal('Brooks')
         })
     })
   })
