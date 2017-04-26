@@ -124,11 +124,12 @@ describe('Zoo routes', ()=>{
       .then( (res)=>{
         res.should.have.status(200);
         res.should.be.a.json
-        res.should.be.a('object')
+        res.should.be.a.object
       })
     })
   })
 
+  // test for editing an existing animal
   describe('UPDATE /api/v1/animals/:id', () =>{
     it('should update an animal obj', () => {
       return chai.request(server)
@@ -140,7 +141,7 @@ describe('Zoo routes', ()=>{
       .then( (res) => {
         res.should.have.status(200)
         res.should.be.a.json
-        res.should.be.a('object')
+        res.should.be.a.object
       })
     })
   })
