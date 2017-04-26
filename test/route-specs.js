@@ -42,6 +42,10 @@ describe('Zoo routes', ()=>{
       .then((res) => {
         res.should.have.status(200)
         res.should.be.json
+        res.body.should.be.a.object
+        res.body.should.have.key('zookeepers')
+        res.body.zookeepers.should.be.a.array
+        res.body.zookeepers[0].name.should.equal('Rudolf')
       })
     })
   });
