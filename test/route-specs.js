@@ -223,7 +223,7 @@ describe('Zoo routes', ()=>{
       .delete('/api/v1/tricks/1')
       .then( (res)=>{
         res.should.have.status(200);
-        res.should.be.a.json
+        res.should.be.json
         res.should.be.a('object')
       })
     })
