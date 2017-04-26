@@ -66,6 +66,7 @@ describe('Zoo routes', ()=>{
     })
   })
 
+  // tests posting a new animal
   describe(`POST /api/v1/animals`, function() {
     it(`should add an animal to the database`, function() {
       return chai.request(server)
@@ -88,6 +89,7 @@ describe('Zoo routes', ()=>{
     })
   });
 
+  // test for deleting an animal
   describe(`DELETE /api/v1/animals/:id`, function() {
     it(`should delete all rows from the pivot table and the animal`, function() {
       return chai.request(server)
