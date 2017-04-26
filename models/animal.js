@@ -4,7 +4,7 @@ const {bookshelf} = require('../db/database')
 require('./animalZookeeper')
 require('./zookeeper')
 require('./animalTrainer')
-requier('./trainer')
+require('./trainer')
 
 const Animal = bookshelf.Model.extend({
 	tableName: 'animals',
