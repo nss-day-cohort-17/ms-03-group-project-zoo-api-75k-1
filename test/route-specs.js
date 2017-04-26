@@ -8,7 +8,8 @@ const { knex } = require('../db/database')
 chai.use(chaiHttp)
 
 
-describe('Shows routes', ()=>{
+describe('Zoo routes', ()=>{
+  // does a rollback on test db and then migration and seed before each test run so we know what is in db
   beforeEach(() =>{
     return knex.migrate.rollback()
       .then (()=>{
@@ -19,41 +20,36 @@ describe('Shows routes', ()=>{
       })
   });
 
+  // test for getting the api root
   describe('get root route', ()=>{
     it('should have all routes',() =>{
       return chai.request(server)
         .get('/api/v1/')
         .then((res) => {
           res.should.have.status(200)
-          res.should.be.a.json
+          res.should.be.json
+          res.should.be.a.object
+          res.body.should.have.key(['animals', 'trainers', 'zookeepers'])
         })
     })
   });
 
-
-  describe('GET /api/v1/zookeepers', ()=>{
-    it ('should return all zookeepers', () => {
-      return chai.request(server)
-      .get('/api/v1/zookeepers')
-      .then((res) => {
-        res.should.have.status(200)
-        res.should.be.json
-      })
-    })
-  });
-
-
-
+  // tests getting all animals
   describe(`GET /api/v1/animals`, function() {
     it(`should return all animals`, function() {
       return chai.request(server)
         .get(`/api/v1/animals`).then(res => {
           res.should.have.status(200)
           res.should.be.json
+          res.body.should.be.a.object
+          res.body.should.have.key('animals')
+          res.body.animals.should.be.a.array
+          res.body.animals[0].name.should.equal('Brooks')
         })
     })
   })
 
+  // tests posting a new animal
   describe(`POST /api/v1/animals`, function() {
     it(`should add an animal to the database`, function() {
       return chai.request(server)
@@ -76,17 +72,53 @@ describe('Shows routes', ()=>{
     })
   });
 
+  // test for deleting an animal
   describe(`DELETE /api/v1/animals/:id`, function() {
     it(`should delete all rows from the pivot table and the animal`, function() {
       return chai.request(server)
-        .delete(`/api/v1/animals/5`)
+        .delete(`/api/v1/animals/1`)
         .then(res => {
-          res.should.be.a.json
+          res.should.be.json
           res.should.have.status(200)
+          res.body.should.be.a.object
         })
     })
   })
 
+  // test for editing an existing animal
+  describe('UPDATE /api/v1/animals/:id', () =>{
+    it('should update an animal obj', () => {
+      return chai.request(server)
+      .patch('/api/v1/animals/1')
+      .send({
+        age:12,
+        type: "primate"
+      })
+      .then( (res) => {
+        res.should.have.status(200)
+        res.should.be.a.json
+        res.should.be.a.object
+      })
+    })
+  })
+
+  // test getting all zookeepers
+  describe('GET /api/v1/zookeepers', ()=>{
+    it ('should return all zookeepers', () => {
+      return chai.request(server)
+      .get('/api/v1/zookeepers')
+      .then((res) => {
+        res.should.have.status(200)
+        res.should.be.json
+        res.body.should.be.a.object
+        res.body.should.have.key('zookeepers')
+        res.body.zookeepers.should.be.a.array
+        res.body.zookeepers[0].name.should.equal('Rudolf')
+      })
+    })
+  });
+
+  // test for posting a new zookeeper
   describe('POST /api/v1/zookeepers/new', () => {
     it('should add a new zookeeper obj to the db', () =>{
       return chai.request(server)
@@ -100,32 +132,62 @@ describe('Shows routes', ()=>{
     })
   })
 
+  // test for deleting a zookeeper
   describe('DELETE /api/v1/zookeepers/:id', ()=>{
-  it('should delete a show obj from db', ()=>{
-    return chai.request(server)
-    .delete('/api/v1/zookeepers/1')
-    .then( (res)=>{
-      res.should.have.status(200);
-      res.should.be.a.json
-      res.should.be.a('object')
-    })
-  })
-})
-
-  describe('UPDATE /api/v1/animals/:id', () =>{
-    it('should update an animal obj', () => {
+    it('should delete a show obj from db', ()=>{
       return chai.request(server)
-      .patch('/api/v1/animals/1')
-      .send({
-        age:12,
-        type: "primate"
-      })
-      .then( (res) => {
-        res.should.have.status(200)
-        res.should.be.a.json
-        res.should.be.a('object')
+      .delete('/api/v1/zookeepers/1')
+      .then( (res)=>{
+        res.should.have.status(200);
+        res.should.be.json
+        res.should.be.a.object
       })
     })
   })
 
+  // test getting all trainers
+  describe('GET /api/v1/trainers', ()=>{
+    it ('should return all trainers', () => {
+      return chai.request(server)
+      .get('/api/v1/trainers')
+      .then((res) => {
+        res.should.have.status(200)
+        res.should.be.json
+        res.body.should.be.a.object
+        res.body.should.have.key('trainers')
+        res.body.trainers.should.be.a.array
+        res.body.trainers[0].name.should.equal('Tammie Tieman')
+      })
+    })
+  });
+
+  // test for posting a new trainer
+  describe('POST /api/v1/trainers/new', () => {
+    it('should add a new trainer obj to the db', () =>{
+      return chai.request(server)
+      .post('/api/v1/trainers/new')
+      .send({
+        name: "Boaty McBoatface",
+        animal_type: "bear"
+      })
+      .then((res) =>{
+        res.should.have.status(200);
+        res.should.be.json
+        res.should.be.a.object
+      })
+    })
+  })
+
+  // test for deleting a trainer
+  describe(`DELETE /api/v1/trainers/:id`, function() {
+    it(`should delete all rows from the pivot table and the trainer`, function() {
+      return chai.request(server)
+        .delete(`/api/v1/trainers/1`)
+        .then(res => {
+          res.should.be.json
+          res.should.have.status(200)
+          res.body.should.be.a.object
+        })
+    })
+  })
 })

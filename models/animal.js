@@ -5,13 +5,16 @@ require('./animalZookeeper')
 require('./zookeeper')
 require('./animalTrainer')
 require('./trainer')
+require('./trick')
+require('./animalTrick')
 
 const Animal = bookshelf.Model.extend({
 	tableName: 'animals',
   // sets relationship with zookeepers
   zookeepers: function () { return this.belongsToMany('Zookeeper').through('AnimalZookeeper')},
   // sets relationship with trainers
-  trainers: function () { return this.belongsToMany('Trainer').through('AnimalTrainer')}
+  trainers: function () { return this.belongsToMany('Trainer').through('AnimalTrainer')},
+  tricks: function () { return this.belongsToMany('Trick').through('AnimalTrick')}
 }, {
   // gets all animals with a specified zookeeper
 	getAllWithRelated: function() {
@@ -27,7 +30,7 @@ const Animal = bookshelf.Model.extend({
 		return this.forge({id}).destroy()
 	},
   // use by cascade delete to delete animal records from pivot table
-	dependents: ['zookeepers', 'trainers'],
+	dependents: ['zookeepers', 'trainers', 'tricks'],
 
   // edits animal
   updateAnimal: function(id,{name,age,species}) {
