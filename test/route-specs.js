@@ -8,7 +8,8 @@ const { knex } = require('../db/database')
 chai.use(chaiHttp)
 
 
-describe('Shows routes', ()=>{
+describe('Zoo routes', ()=>{
+  // does a rollback on test db and then migration and seed before each test run so we know what is in db
   beforeEach(() =>{
     return knex.migrate.rollback()
       .then (()=>{
