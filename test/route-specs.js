@@ -76,16 +76,16 @@ describe('Shows routes', ()=>{
     })
   });
 
-  describe(`DELETE /api/v1/animals/:id`, function() {
-    it(`should delete all rows from the pivot table and the animal`, function() {
-      return chai.request(server)
-        .delete(`/api/v1/animals/5`)
-        .then(res => {
-          res.should.be.a.json
-          res.should.have.status(200)
-        })
-    })
-  })
+  // describe(`DELETE /api/v1/animals/:id`, function() {
+  //   it(`should delete all rows from the pivot table and the animal`, function() {
+  //     return chai.request(server)
+  //       .delete(`/api/v1/animals/5`)
+  //       .then(res => {
+  //         res.should.be.a.json
+  //         res.should.have.status(200)
+  //       })
+  //   })
+  // })
 
   describe('POST /api/v1/zookeepers/new', () => {
     it('should add a new zookeeper obj to the db', () =>{
@@ -127,5 +127,40 @@ describe('Shows routes', ()=>{
       })
     })
   })
+
+  describe('GET /api/v1/tricks', () =>{
+    it('should return all tricks', () =>{
+      return chai.request(server)
+      .get('/api/v1/tricks')
+      .then( (res) =>{
+        res.should.have.status(200)
+      })
+    })
+  })
+
+  describe('POST /api/v1/tricks/new', () => {
+    it('should add a new trick obj to the db', () =>{
+      return chai.request(server)
+      .post('/api/v1/tricks/new')
+      .send({
+        name: "Bowling"
+      })
+      .then((res) =>{
+        res.should.have.status(200);
+      })
+    })
+  })
+
+  describe('DELETE /api/v1/tricks/:id', ()=>{
+  it('should delete a trick obj from db', ()=>{
+    return chai.request(server)
+    .delete('/api/v1/tricks/1')
+    .then( (res)=>{
+      res.should.have.status(200);
+      res.should.be.a.json
+      res.should.be.a('object')
+    })
+  })
+})
 
 })
