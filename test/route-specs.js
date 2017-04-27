@@ -29,7 +29,7 @@ describe('Zoo routes', ()=>{
           res.should.have.status(200)
           res.should.be.json
           res.should.be.a.object
-          res.body.should.have.key(['animals', 'trainers', 'zookeepers'])
+          res.body.should.have.key(['animals', 'trainers', 'zookeepers', 'tricks'])
         })
     })
   });
@@ -177,7 +177,7 @@ describe('Zoo routes', ()=>{
       })
     })
   })
-  
+
   // test for deleting a trainer
   describe(`DELETE /api/v1/trainers/:id`, function() {
     it(`should delete all rows from the pivot table and the trainer`, function() {
@@ -190,6 +190,7 @@ describe('Zoo routes', ()=>{
         })
     })
   })
+
   //test for getting all tricks
   describe('GET /api/v1/tricks', () =>{
     it('should return all tricks', () =>{
@@ -200,6 +201,7 @@ describe('Zoo routes', ()=>{
       })
     })
   })
+
   //test for adding a trick
   describe('POST /api/v1/tricks/new', () => {
     it('should add a new trick obj to the db', () =>{
@@ -213,6 +215,7 @@ describe('Zoo routes', ()=>{
       })
     })
   })
+
   //test for delete trick
   describe('DELETE /api/v1/tricks/:id', ()=>{
     it('should delete a trick obj from db', ()=>{
@@ -220,7 +223,7 @@ describe('Zoo routes', ()=>{
       .delete('/api/v1/tricks/1')
       .then( (res)=>{
         res.should.have.status(200);
-        res.should.be.a.json
+        res.should.be.json
         res.should.be.a('object')
       })
     })

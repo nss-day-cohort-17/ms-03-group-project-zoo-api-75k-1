@@ -3,11 +3,17 @@
 const { bookshelf } = require('../db/database')
 require('./animalTrick')
 require('./animal')
+require('./trainer')
+require('./animalTrainer')
+require('./animaltypeTrick')
+require('./type')
 
 
 const Trick = bookshelf.Model.extend( {
   tableName: 'tricks',
-  animals: function () { return this.belongsToMany('Animal').through('AnimalTrick')}
+  animals: function () { return this.belongsToMany('Animal').through('AnimalTrick')},
+  trainers: function() {return this.belongsToMany('Trainer').through('AnimalTrainer')},
+  animaltypes: function() {return this.belongsToMany('Type').through('AnimaltypeTrick')}
 }, {
   getAllTricks: function () {
     return this.forge()
@@ -29,7 +35,7 @@ const Trick = bookshelf.Model.extend( {
       return err
     })
   },
-  dependents: ['animals']
+  dependents: ['animals', 'trainers', 'animaltypes']
 })
 
 module.exports = bookshelf.model('Trick', Trick)
